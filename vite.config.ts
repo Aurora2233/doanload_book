@@ -3,15 +3,23 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import Components from 'unplugin-vue-components/vite';
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
+import ViteComponents, { AntDesignVueResolver } from 'vite-plugin-components';
+import Compression from 'vite-compression-plugin';
+import { visualizer } from 'rollup-plugin-visualizer';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    Components({
-      resolvers: [AntDesignVueResolver()],
+    ViteComponents({
+      customComponentResolvers: [AntDesignVueResolver()],
+    }),
+    Compression({ threshold: 512 }),
+    visualizer({
+      open: true,
+      brotliSize: true,
+      filename: './analyze/index.html',
     }),
   ],
   resolve: {
