@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts">
-import { BaseURL } from '@/constants';
 import { BOOK } from '@/constants/api';
 import {
   defineComponent,
@@ -29,19 +28,19 @@ export default defineComponent({
 
     const onSearch = async () => {
       if (current.proxy) {
-        const data = await current.proxy.$utils.get<{ data: { id: string } }>(
-          BOOK.DOWNLOAD,
-          {
-            url: value.search,
-          }
-        );
-        window.open(`${BaseURL}${BOOK.DOWNLOAD_BOOK}?id=${data.data.id}`);
+        const data = await current.proxy.$utils.get<{
+          data: { name: string; downloadUrl: string };
+        }>(BOOK.DOWNLOAD, {
+          url: value.search,
+        });
+        var link = document.createElement('a');
+        link.setAttribute('download', data.data.name);
+        link.href = data.data.downloadUrl;
+        document.body.appendChild(link); //添加到页面中，为兼容Firefox浏览器
+        link.click();
+        document.body.removeChild(link); //从页面移除
       }
     };
-
-    // const handleClickDownload = () => {
-
-    // };
 
     return {
       value,
