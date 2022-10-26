@@ -33,12 +33,7 @@ export default defineComponent({
         }>(BOOK.DOWNLOAD, {
           url: value.search,
         });
-        var link = document.createElement('a');
-        link.setAttribute('download', data.data.name);
-        link.href = data.data.downloadUrl;
-        document.body.appendChild(link); //添加到页面中，为兼容Firefox浏览器
-        link.click();
-        document.body.removeChild(link); //从页面移除
+        window.open(data.data.downloadUrl);
       }
     };
 
