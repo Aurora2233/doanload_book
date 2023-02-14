@@ -35,12 +35,18 @@ request.interceptors.response.use(
   }
 );
 
-const get = (
+type ResponseDataType = <T>(
+  url: string,
+  params?: Record<string, unknown>,
+  config?: AxiosRequestConfig
+) => Promise<T>;
+
+const get: ResponseDataType = (
   url: string,
   params: unknown,
   config?: Omit<AxiosRequestConfig, 'url' | 'method' | 'params'>
 ) => {
-  return request<AxiosResponse>({
+  return request({
     url: url,
     method: 'GET',
     params: params,

@@ -10,11 +10,11 @@
         <template #title>
           <span>
             <user-outlined />
-            item1
+            工具类
           </span>
         </template>
         <a-menu-item key="1">
-          <RouterLink to="/">Download</RouterLink>
+          <RouterLink to="/Download">下载小说</RouterLink>
         </a-menu-item>
         <a-menu-item key="2">
           <RouterLink to="/list">Books</RouterLink>
