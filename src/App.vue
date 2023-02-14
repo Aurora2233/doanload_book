@@ -4,7 +4,14 @@
 </script>
 
 <template>
-  <div class="todo">TODO</div>
+  <div>
+    <div class="todo">TODO</div>
+    <footer class="footer">
+      <a href="https://beian.miit.gov.cn/" target="_blank"
+        >湘ICP备2020019678号</a
+      >
+    </footer>
+  </div>
   <!-- <a-layout>
     <a-layout>
       <DrawerMenu />
@@ -25,5 +32,10 @@
 <style scoped>
 .todo {
   font-size: 20px;
+  height: 100vh;
+}
+.footer {
+  height: 60px;
+  text-align: center;
 }
 </style>
