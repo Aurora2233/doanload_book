@@ -8,7 +8,7 @@
     <div class="todo">TODO</div>
     <footer class="footer">
       <a href="https://beian.miit.gov.cn/" target="_blank"
-        >湘ICP备2020019678号</a
+        >湘ICP备2020019678号-1</a
       >
     </footer>
   </div>
